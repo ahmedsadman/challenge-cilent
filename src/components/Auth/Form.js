@@ -1,10 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { AuthContext } from '../../contexts/AuthContext';
 import { Label, Input, Button, Card } from '../common';
 
-function Form() {
-	const { dispatch } = useContext(AuthContext);
+function Form(props) {
 	const [actionLabel, setActionLabel] = useState('Login');
 	const [email, setEmail] = useState('');
 	const [displayName, setDisplayName] = useState('');
@@ -16,9 +14,13 @@ function Form() {
 		setActionLabel(!isLogin ? 'Login' : 'Register');
 	};
 
-	const onSubmit = (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault();
-		dispatch({ type: 'USER_LOGIN', token: null });
+		if (isLogin) {
+			await props.loginUser(email, password);
+		} else {
+			await props.registerUser(displayName, email, password);
+		}
 		console.log('DONE');
 	};
 

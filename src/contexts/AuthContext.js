@@ -5,8 +5,11 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider = (props) => {
 	const initialState = {
-		logged_in: false,
+		loggedIn: false,
 		token: null,
+		username: '',
+		tokenExpiry: null,
+		id: null,
 	};
 
 	const [authData, dispatch] = useReducer(authReducer, initialState, () => {

@@ -3,14 +3,20 @@ export const authReducer = (state, action) => {
 		case 'USER_LOGIN':
 			return {
 				...state,
-				logged_in: true,
+				loggedIn: true,
 				token: action.token,
+				id: action.id,
+				username: action.username,
+				tokenExpiry: action.tokenExpiry,
 			};
 		case 'USER_LOGOUT':
 			return {
 				...state,
-				logged_in: false,
+				loggedIn: false,
 				token: null,
+				id: null,
+				username: '',
+				tokenExpiry: null,
 			};
 		default:
 			break;

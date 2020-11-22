@@ -1,11 +1,20 @@
 import React from 'react';
 import { Container, Row, Col, Hidden } from 'react-grid-system';
 import Tweets from './Tweets';
+import Menu from './Menu';
 import FollowCard from './FollowCard/FollowCard';
 
 function Feed() {
 	return (
 		<Container fluid>
+			<Row>
+				<Hidden xs>
+					<Col xs={1}></Col>
+				</Hidden>
+				<Col md={6}>
+					<Menu />
+				</Col>
+			</Row>
 			<Row>
 				<Hidden xs>
 					<Col xs={1}></Col>
