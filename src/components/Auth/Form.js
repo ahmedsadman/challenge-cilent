@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
+import { AuthContext } from '../../contexts/AuthContext';
 import { Label, Input, Button, Card } from '../common';
 
 function Form() {
+	const { dispatch } = useContext(AuthContext);
 	const [actionLabel, setActionLabel] = useState('Login');
 	const [email, setEmail] = useState('');
 	const [displayName, setDisplayName] = useState('');
@@ -14,8 +16,14 @@ function Form() {
 		setActionLabel(!isLogin ? 'Login' : 'Register');
 	};
 
+	const onSubmit = (e) => {
+		e.preventDefault();
+		dispatch({ type: 'USER_LOGIN', token: null });
+		console.log('DONE');
+	};
+
 	return (
-		<form>
+		<form onSubmit={onSubmit}>
 			<Card padding='20px' width='300px'>
 				<Header>{actionLabel}</Header>
 				{!isLogin ? (
@@ -45,7 +53,7 @@ function Form() {
 						type='password'
 						name='password'
 						value={password}
-						onChange={(e) => setPassword(e.target.password)}
+						onChange={(e) => setPassword(e.target.value)}
 					/>
 				</Controls>
 				<div
