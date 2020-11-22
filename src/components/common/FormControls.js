@@ -7,6 +7,8 @@ export const Label = ({ children, ...props }) => (
 
 export const Input = (props) => <StyledInput {...props} />;
 
+export const TextArea = (props) => <StyledTextArea {...props} />;
+
 const StyledLabel = styled.label`
 	display: flex;
 	flex: 1;
@@ -25,4 +27,10 @@ const StyledInput = styled.input`
 	box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
 	font-size: 0.95em;
 	font-family: inherit;
+`;
+
+const StyledTextArea = styled.textarea`
+	flex: 1;
+	height: 200px;
+	width: 100%;
 `;

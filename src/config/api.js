@@ -5,4 +5,5 @@ export const api = {
 	register: `${baseURL}/auth/register`,
 	getUser: (id) => `${baseURL}/user/${id}`,
 	getFeed: (id, page) => `${baseURL}/user/${id}/feed?page=${page}`,
+	createChallenge: `${baseURL}/challenge`,
 };

@@ -14,6 +14,9 @@ function Menu() {
 				<Link to='/feed'>Feed</Link>
 			</Item>
 			<Item>
+				<Link to='/challenge'>Create Challenge</Link>
+			</Item>
+			<Item>
 				<Link to='/logout'>Logout</Link>
 			</Item>
 		</Container>
