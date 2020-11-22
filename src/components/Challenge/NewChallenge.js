@@ -6,7 +6,7 @@ import DateTimePicker from 'react-datetime-picker';
 import { TextArea, Button, Label, Input } from '../common';
 import { AuthContext } from '../../contexts/AuthContext';
 import { api } from '../../config/api';
-import Menu from '../Feed/Menu';
+import Menu from '../common/Menu';
 
 function NewChallenge(props) {
 	const [datetime, setDatetime] = useState(new Date());
@@ -48,6 +48,9 @@ function NewChallenge(props) {
 				</Col>
 			</Row>
 			<Row>
+				<Hidden xs>
+					<Col xs={1}></Col>
+				</Hidden>
 				<Col md={6}>
 					<TextArea
 						style={{ margin: '20px 0' }}
@@ -58,6 +61,9 @@ function NewChallenge(props) {
 				</Col>
 			</Row>
 			<Row>
+				<Hidden xs>
+					<Col xs={1}></Col>
+				</Hidden>
 				<Col md={6}>
 					<div style={{ display: 'flex', flexDirection: 'column' }}>
 						<DateTimePicker

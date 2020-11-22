@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { Container, Row, Col, Hidden } from 'react-grid-system';
+import Menu from '../common/Menu';
 import { api } from '../../config/api';
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -21,8 +23,18 @@ function ChallengeView(props) {
 
 	return (
 		<React.Fragment>
-			<div>Question</div>
-			<div>{data.question}</div>
+			<Container fluid>
+				<Row>
+					<Hidden xs>
+						<Col xs={1}></Col>
+					</Hidden>
+					<Col md={6}>
+						<Menu />
+						<div>Question</div>
+						<div>{data.question}</div>
+					</Col>
+				</Row>
+			</Container>
 		</React.Fragment>
 	);
 }

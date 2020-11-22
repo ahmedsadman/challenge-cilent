@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Hidden } from 'react-grid-system';
-import Tweets from './Challenges';
-import Menu from './Menu';
+import Challenges from './Challenges';
+import Menu from '../common/Menu';
 import FollowCard from './FollowCard/FollowCard';
 
 function Feed(props) {
@@ -20,11 +20,11 @@ function Feed(props) {
 					<Col xs={1}></Col>
 				</Hidden>
 				<Col md={6}>
-					{/* Render the Tweets feed here */}
-					<Tweets history={props.history} />
+					{/* Render the challenge feed here */}
+					<Challenges history={props.history} />
 				</Col>
 				<Col md={4}>
-					{/* Render the Tweets feed here */}
+					{/* Follow Section*/}
 					<FollowCard />
 				</Col>
 				<Hidden xs>

@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import Tweet from './Challenge/Challenge';
+import Challenge from './Challenge/Challenge';
 import { api } from '../../config/api';
 import { AuthContext } from '../../contexts/AuthContext';
 
-function Tweets(props) {
+function Challenges(props) {
 	// const data = [
 	// 	{ author: 'Jami', id: 1, content: 'Nice weather!' },
 	// 	{ author: 'Jami', id: 2, content: 'Just landed safely in Dhaka' },
@@ -26,19 +26,19 @@ function Tweets(props) {
 	}, []);
 
 	return (
-		<TweetsContainer>
+		<ChallengesContainer>
 			{feed.map((challenge) => (
-				<Tweet
+				<Challenge
 					challenge={challenge}
 					history={props.history}
 					key={challenge.id}
 				/>
 			))}
-		</TweetsContainer>
+		</ChallengesContainer>
 	);
 }
 
-const TweetsContainer = styled.div`
+const ChallengesContainer = styled.div`
 	margin: 30px 0;
 `;
-export default Tweets;
+export default Challenges;
