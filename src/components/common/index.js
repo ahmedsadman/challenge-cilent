@@ -1,4 +1,4 @@
 export * from './Card';
-export * from './Header';
+export * from './Headers';
 export * from './FormControls';
 export * from './Button';

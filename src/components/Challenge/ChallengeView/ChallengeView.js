@@ -31,7 +31,7 @@ function ChallengeView(props) {
 					</Hidden>
 					<Col md={6}>
 						<Menu />
-						<Meta author={data.author} question={data.question} />
+						<Meta data={data} />
 					</Col>
 				</Row>
 			</Container>
