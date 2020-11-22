@@ -20,7 +20,7 @@ function FollowCard() {
 		<FollowContainer>
 			<Search />
 			{data.map((user) => (
-				<RowItem name={user.name} />
+				<RowItem name={user.name} key={user.id} />
 			))}
 		</FollowContainer>
 	);

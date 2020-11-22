@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { AuthContext } from '../../contexts/AuthContext';
 
 function Menu() {
+	const { authData } = useContext(AuthContext);
 	return (
 		<Container>
+			<Item>
+				<Link to='/feed'>{`Welcome ${authData.username}`}</Link>
+			</Item>
 			<Item>
 				<Link to='/feed'>Feed</Link>
 			</Item>

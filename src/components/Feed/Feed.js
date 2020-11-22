@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Hidden } from 'react-grid-system';
-import Tweets from './Tweets';
+import Tweets from './Challenges';
 import Menu from './Menu';
 import FollowCard from './FollowCard/FollowCard';
 
