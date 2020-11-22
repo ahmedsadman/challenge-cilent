@@ -3,9 +3,16 @@ import styled from 'styled-components';
 import { Header1, Header2, Card } from '../../common';
 
 function Meta(props) {
-	const { author, question, expires_on } = props.data;
-	const expiry = new Date(expires_on);
-	const has_expired = Date.now() >= expiry.getTime() ? 'Yes' : 'No';
+	const { author, question, expires_on, submission } = props.data;
+
+	const renderAnswerSection = () => {
+		if (!submission) return null;
+
+		return (
+			<P style={{ margin: '20px 0' }}>My Answer: {submission.answer}</P>
+		);
+	};
+
 	return (
 		<Card>
 			<MetaContainer>
@@ -17,7 +24,10 @@ function Meta(props) {
 				<P style={{ marginTop: '25px', fontSize: '0.9em' }}>
 					Expires On: {expires_on}
 				</P>
-				<P style={{ fontSize: '0.9em' }}>Expired: {has_expired}</P>
+				<P style={{ fontSize: '0.9em' }}>
+					Expired: {props.hasExpired() ? 'Yes' : 'No'}
+				</P>
+				{renderAnswerSection()}
 			</MetaContainer>
 		</Card>
 	);
