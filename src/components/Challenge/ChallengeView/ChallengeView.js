@@ -21,9 +21,10 @@ function ChallengeView(props) {
 	};
 
 	const getSubmissions = async () => {
-		if (!hasExpired()) {
+		if (data && data.expires_on && !hasExpired(data.expires_on)) {
 			return;
 		}
+
 		const response = await axios.get(
 			api.getChallengeSubmissions(props.match.params.id)
 		);
@@ -31,8 +32,28 @@ function ChallengeView(props) {
 		setSubmissions(response.data.submissions);
 	};
 
-	const hasExpired = () => {
-		const expiry = new Date(data.expires_on);
+	const createSubmission = async (answer) => {
+		try {
+			if (hasExpired(data.expires_on)) {
+				alert('Challenge Expired');
+				return;
+			}
+			const response = await axios.post(
+				api.createChallengeSubmission(props.match.params.id),
+				{
+					user_id: authData.id,
+					answer,
+				}
+			);
+			console.log('Created submission', response.data);
+			await getAllData();
+		} catch (e) {
+			console.log('Error on submission', e);
+		}
+	};
+
+	const hasExpired = (expires_on) => {
+		const expiry = new Date(expires_on);
 		return Date.now() >= expiry.getTime();
 	};
 
@@ -54,8 +75,12 @@ function ChallengeView(props) {
 					</Hidden>
 					<Col md={6}>
 						<Menu />
-						<Meta data={data} hasExpired={hasExpired} />
-						{hasExpired() ? (
+						<Meta
+							data={data}
+							hasExpired={hasExpired(data.expires_on)}
+							submitAnswer={createSubmission}
+						/>
+						{hasExpired(data.expires_on) ? (
 							<Submissions data={submissions} />
 						) : null}
 					</Col>

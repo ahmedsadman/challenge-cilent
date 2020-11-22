@@ -1,16 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Header1, Header2, Card } from '../../common';
+import { Header1, Header2, Card, Input, Label, Button } from '../../common';
 
 function Meta(props) {
-	const { author, question, expires_on, submission } = props.data;
+	const { author, question, expires_on, submission, tagged } = props.data;
+	const [answer, setAnswer] = useState('');
+
+	const onAnswerSubmit = (e) => {
+		e.preventDefault();
+		props.submitAnswer(answer);
+	};
 
 	const renderAnswerSection = () => {
-		if (!submission) return null;
+		if (!tagged) return null;
 
-		return (
-			<P style={{ margin: '20px 0' }}>My Answer: {submission.answer}</P>
-		);
+		if (submission && submission.answer) {
+			return (
+				<P style={{ margin: '20px 0' }}>
+					My Answer: {submission.answer}
+				</P>
+			);
+		} else if (!props.hasExpired) {
+			return (
+				<form style={{ margin: '20px 0' }} onSubmit={onAnswerSubmit}>
+					<Label htmlFor='answer'>Answer Question</Label>
+					<Input
+						name='answer'
+						value={answer}
+						onChange={(e) => setAnswer(e.target.value)}
+						placeholder='Your answer here...'
+					/>
+					<Button
+						type='submit'
+						style={{ margin: '10px 0', fontSize: '0.9em' }}
+					>
+						Submit
+					</Button>
+				</form>
+			);
+		}
+
+		return null;
 	};
 
 	return (
@@ -25,7 +55,7 @@ function Meta(props) {
 					Expires On: {expires_on}
 				</P>
 				<P style={{ fontSize: '0.9em' }}>
-					Expired: {props.hasExpired() ? 'Yes' : 'No'}
+					Expired: {props.hasExpired ? 'Yes' : 'No'}
 				</P>
 				{renderAnswerSection()}
 			</MetaContainer>
