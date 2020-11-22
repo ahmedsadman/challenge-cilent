@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ProtectedRoute from './components/common/ProtectedRoute';
 import Topbar from './components/common/Topbar';
 import Auth from './components/Auth/Auth';
 import Logout from './components/Auth/Logout';
@@ -13,10 +14,18 @@ function Routes() {
 			<Topbar />
 			<Switch>
 				<Route path='/' component={Auth} exact />
-				<Route path='/feed' component={Feed} exact />
-				<Route path='/challenge/:id' component={ChallengeView} exact />
-				<Route path='/challenge' component={NewChallenge} exact />
-				<Route path='/logout' component={Logout} exact />
+				<ProtectedRoute path='/feed' component={Feed} exact />
+				<ProtectedRoute
+					path='/challenge/:id'
+					component={ChallengeView}
+					exact
+				/>
+				<ProtectedRoute
+					path='/challenge'
+					component={NewChallenge}
+					exact
+				/>
+				<ProtectedRoute path='/logout' component={Logout} exact />
 			</Switch>
 		</Router>
 	);
