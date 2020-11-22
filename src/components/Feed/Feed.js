@@ -4,7 +4,7 @@ import Tweets from './Challenges';
 import Menu from './Menu';
 import FollowCard from './FollowCard/FollowCard';
 
-function Feed() {
+function Feed(props) {
 	return (
 		<Container fluid>
 			<Row>
@@ -21,7 +21,7 @@ function Feed() {
 				</Hidden>
 				<Col md={6}>
 					{/* Render the Tweets feed here */}
-					<Tweets />
+					<Tweets history={props.history} />
 				</Col>
 				<Col md={4}>
 					{/* Render the Tweets feed here */}

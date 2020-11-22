@@ -28,7 +28,11 @@ function Tweets(props) {
 	return (
 		<TweetsContainer>
 			{feed.map((challenge) => (
-				<Tweet challenge={challenge} key={challenge.id} />
+				<Tweet
+					challenge={challenge}
+					history={props.history}
+					key={challenge.id}
+				/>
 			))}
 		</TweetsContainer>
 	);

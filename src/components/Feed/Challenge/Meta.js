@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 function Meta(props) {
-	const { authorName } = props;
+	const { authorName, tagged, expires } = props;
 	return (
 		<MetaContainer>
 			<ProfileImage
@@ -11,7 +11,10 @@ function Meta(props) {
 			/>
 			<AuthorInfo>
 				<div style={{ fontWeight: 500 }}>{authorName}</div>
-				<div style={{ fontSize: '0.9em' }}>21st Jun, 2020</div>
+				<div style={{ fontSize: '0.9em' }}>{expires}</div>
+				{tagged ? (
+					<div style={{ fontSize: '0.9em' }}>You're tagged</div>
+				) : null}
 			</AuthorInfo>
 		</MetaContainer>
 	);

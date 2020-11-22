@@ -6,4 +6,6 @@ export const api = {
 	getUser: (id) => `${baseURL}/user/${id}`,
 	getFeed: (id, page) => `${baseURL}/user/${id}/feed?page=${page}`,
 	createChallenge: `${baseURL}/challenge`,
+	getChallenge: (id, userId) =>
+		`${baseURL}/challenge/${id}?user_id=${userId}`,
 };
