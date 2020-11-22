@@ -5,8 +5,8 @@ import Topbar from './components/common/Topbar';
 import Auth from './components/Auth/Auth';
 import Logout from './components/Auth/Logout';
 import Feed from './components/Feed/Feed';
-import NewChallenge from './components/Challenge/NewChallenge';
-import ChallengeView from './components/Challenge/ChallengeView';
+import NewChallenge from './components/Challenge/NewChallenge/NewChallenge';
+import ChallengeView from './components/Challenge/ChallengeView/ChallengeView';
 
 function Routes() {
 	return (

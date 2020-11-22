@@ -3,10 +3,10 @@ import { Container, Row, Col, Hidden } from 'react-grid-system';
 import axios from 'axios';
 import styled from 'styled-components';
 import DateTimePicker from 'react-datetime-picker';
-import { TextArea, Button, Label, Input } from '../common';
-import { AuthContext } from '../../contexts/AuthContext';
-import { api } from '../../config/api';
-import Menu from '../common/Menu';
+import { TextArea, Button, Label, Input } from '../../common';
+import { AuthContext } from '../../../contexts/AuthContext';
+import { api } from '../../../config/api';
+import Menu from '../../common/Menu';
 
 function NewChallenge(props) {
 	const [datetime, setDatetime] = useState(new Date());

@@ -1,19 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Hidden } from 'react-grid-system';
-import Menu from '../common/Menu';
-import { api } from '../../config/api';
-import { AuthContext } from '../../contexts/AuthContext';
+import Menu from '../../common/Menu';
+import Meta from './Meta';
+import { api } from '../../../config/api';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 function ChallengeView(props) {
 	const { authData } = useContext(AuthContext);
-	const [data, setData] = useState({});
+	const [data, setData] = useState({ author: {}, question: '' });
 
 	const getChallenge = async () => {
 		const response = await axios.get(
 			api.getChallenge(props.match.params.id, authData.id)
 		);
-		console.log(response.data);
+		console.log('REsponse got', response.data);
 		setData(response.data);
 	};
 
@@ -30,8 +31,7 @@ function ChallengeView(props) {
 					</Hidden>
 					<Col md={6}>
 						<Menu />
-						<div>Question</div>
-						<div>{data.question}</div>
+						<Meta author={data.author} question={data.question} />
 					</Col>
 				</Row>
 			</Container>
