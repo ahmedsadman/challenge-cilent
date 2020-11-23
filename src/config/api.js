@@ -10,4 +10,5 @@ export const api = {
 	getChallengeSubmissions: (id) => `${baseURL}/challenge/${id}/submissions`,
 	createChallengeSubmission: (id) => `${baseURL}/challenge/${id}/submissions`,
 	getMyChallenges: `${baseURL}/user/my-challenges`,
+	findUser: (text) => `${baseURL}/user/find?text=${text}`,
 };
