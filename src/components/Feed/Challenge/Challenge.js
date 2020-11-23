@@ -8,6 +8,11 @@ function Challenge(props) {
 	const onClick = () => {
 		history.push(`/challenge/${challenge.id}`);
 	};
+	const hasExpired = () => {
+		const expiry = new Date(challenge.expires_on);
+		return Date.now() >= expiry.getTime();
+	};
+
 	return (
 		<Card
 			key={challenge.id}
@@ -21,6 +26,12 @@ function Challenge(props) {
 				expires={challenge.expires_on}
 			/>
 			<Content>{challenge.question}</Content>
+			{hasExpired ? (
+				<div style={{ fontSize: '0.9em' }}>(Expired)</div>
+			) : null}
+			{challenge.submission && challenge.submission.answer ? (
+				<div style={{ fontSize: '0.9em' }}>(Answered)</div>
+			) : null}
 		</Card>
 	);
 }
