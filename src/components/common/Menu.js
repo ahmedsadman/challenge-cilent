@@ -17,6 +17,9 @@ function Menu() {
 				<Link to='/challenge'>Create Challenge</Link>
 			</Item>
 			<Item>
+				<Link to='/profile'>My Profile</Link>
+			</Item>
+			<Item>
 				<Link to='/logout'>Logout</Link>
 			</Item>
 		</Container>

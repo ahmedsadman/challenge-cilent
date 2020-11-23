@@ -7,6 +7,7 @@ import Logout from './components/Auth/Logout';
 import Feed from './components/Feed/Feed';
 import NewChallenge from './components/Challenge/NewChallenge/NewChallenge';
 import ChallengeView from './components/Challenge/ChallengeView/ChallengeView';
+import Profile from './components/Profile/Profile';
 
 function Routes() {
 	return (
@@ -25,6 +26,7 @@ function Routes() {
 					component={NewChallenge}
 					exact
 				/>
+				<ProtectedRoute path='/profile' component={Profile} exact />
 				<ProtectedRoute path='/logout' component={Logout} exact />
 			</Switch>
 		</Router>
