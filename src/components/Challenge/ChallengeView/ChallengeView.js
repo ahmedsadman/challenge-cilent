@@ -11,10 +11,12 @@ function ChallengeView(props) {
 	const { authData } = useContext(AuthContext);
 	const [data, setData] = useState({ author: {}, question: '' });
 	const [submissions, setSubmissions] = useState([]);
+	const headers = { Authorization: `Bearer ${authData.token}` };
 
 	const getChallenge = async () => {
 		const response = await axios.get(
-			api.getChallenge(props.match.params.id, authData.id)
+			api.getChallenge(props.match.params.id),
+			{ headers }
 		);
 		console.log('REsponse got', response.data);
 		setData(response.data);
@@ -26,7 +28,8 @@ function ChallengeView(props) {
 		}
 
 		const response = await axios.get(
-			api.getChallengeSubmissions(props.match.params.id)
+			api.getChallengeSubmissions(props.match.params.id),
+			{ headers }
 		);
 		console.log('submissions', response.data);
 		setSubmissions(response.data.submissions);
@@ -41,9 +44,9 @@ function ChallengeView(props) {
 			const response = await axios.post(
 				api.createChallengeSubmission(props.match.params.id),
 				{
-					user_id: authData.id,
 					answer,
-				}
+				},
+				{ headers }
 			);
 			console.log('Created submission', response.data);
 			await getAllData();

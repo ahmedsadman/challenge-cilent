@@ -17,13 +17,16 @@ function NewChallenge(props) {
 
 	const createChallenge = async () => {
 		try {
-			console.log(datetime.toISOString());
-			const response = await axios.post(api.createChallenge, {
-				author_id: authData.id,
-				question,
-				expires_on: datetime.toISOString(),
-				tags: taggedUser,
-			});
+			const headers = { Authorization: `Bearer ${authData.token}` };
+			const response = await axios.post(
+				api.createChallenge,
+				{
+					question,
+					expires_on: datetime.toISOString(),
+					tags: taggedUser,
+				},
+				{ headers }
+			);
 			console.log(response.data);
 			alert('Challenge created');
 		} catch (e) {

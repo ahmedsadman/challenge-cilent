@@ -44,6 +44,7 @@ function Auth(props) {
 			props.history.push('/feed');
 		} catch (e) {
 			alert('User invalid/Unexpected Error');
+			console.log(e.response);
 		}
 	};
 

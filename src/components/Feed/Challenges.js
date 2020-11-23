@@ -16,7 +16,10 @@ function Challenges(props) {
 	const [feed, setFeed] = useState([]);
 
 	const getFeed = async (page = 1) => {
-		const response = await axios.get(api.getFeed(authData.id, page));
+		const headers = { Authorization: `Bearer ${authData.token}` };
+		const response = await axios.get(api.getFeed(authData.id, page), {
+			headers,
+		});
 		console.log(response.data.items);
 		setFeed([...feed, ...response.data.items]);
 	};
